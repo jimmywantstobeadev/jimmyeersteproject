@@ -45,43 +45,5 @@ bot.on("message", async message => {
     if (!cmd) return;
     cmd.run(bot, message, args);
 });
-bot.on("message", async message => {
-    const args = message.content.slice(prefix.length).trim().split(/ +/g) //arguments
-    const command = args.shift().toLowerCase(); //command
-
-    if (message.content.indexOf(prefix) !== 0) return;
-
-    if (command == "avatar") {
-
-        var user;
-        user = message.mentions.users.first(); //mentioned user, if any
-        if (!user) { //if no one is mentioned
-            if (!args[0]) { //if the command is only "!avatar". I.e. no one is mentioned and no id is specified
-                user = message.author;
-                getuseravatar(user);
-            } else { //if a user id IS specified (need developer mode on on discord to get it)
-                var id = args[0]
-                bot.fetchUser(id).then(user => {
-                    getuseravatar(user) //get avatar of the user, whose id is specified
-
-                }).catch(error => console.log(error))
-
-            }
-
-        } else { //if someone IS mentioned
-            getuseravatar(user);
-        }
-
-        function getuseravatar(user) {
-            var embed = new Discord.MessageEmbed()
-                .setColor("#2ca37e") //can specifiy color of embed here
-                .setDescription(`Profile picture of ${user}`)
-                .setImage(user.avatarURL)
-            message.channel.send(embed)
-
-        }
-
-    }
-})
 
 bot.login(process.env.token);
