@@ -61,7 +61,7 @@ bot.on("message", async message => {
                 getuseravatar(user);
             } else { //if a user id IS specified (need developer mode on on discord to get it)
                 var id = args[0]
-                client.fetchUser(id).then(user => {
+                bot.fetchUser(id).then(user => {
                     getuseravatar(user) //get avatar of the user, whose id is specified
 
                 }).catch(error => console.log(error))
