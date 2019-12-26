@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
         let embed = new Discord.RichEmbed()
 
         .setImage(mentionedUser.displayAvatarURL)
-        .setColor("00ff00")
+        .setColor("#1c84d4")
         .setTitle("Avatar")
         .setFooter("Searched by " + message.author.tag)
         .setDescription("[Avatar URL link]("+mentionedUser.displayAvatarURL+")");
